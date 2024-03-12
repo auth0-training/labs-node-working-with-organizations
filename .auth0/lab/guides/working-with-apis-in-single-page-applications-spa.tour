@@ -1,28 +1,38 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "2: Working with APIs in Single Page Applications (SPA)",
+  "title": "2: Configure Your SPA for Organizations",
   "steps": [
     {
       "file": "",
       "line": 1,
       "title": "What you'll do",
-      "description": "**Here's what you'll do:**  \n\nIn this lab, you will learn how to make your Single-Page Application (SPA) consume, on behalf of the user, the private endpoint exposed by an API.\n\nThe SPA in question is a vanilla JavaScript application that consumes the Expenses API.\n\nIn this exercise, you will focus on updating the SPA to request access to the API and secure the request to the private Expenses API endpoint.\n"
+      "description": "**Here's what you'll do:**  \n\nIn this lab, you will learn how to configure your Single-Page Application (SPA) to work with Organizations in order to manage your business users.\n\nThe SPA in question is a vanilla JavaScript application that consumes the Expenses API.\n\nYou will configure Organization Roles associated with permissions for this API."
     },
     {
       "file": "",
       "line": 1,
-      "title": "Launch the Web App and API",
-      "description": "## Launch the Web App and API\nAlright! You've registered the Lab: API in your Auth0 tenant. We've also taken the liberty of automatically registering the Single Page Application (Lab: SPA) that this lab uses. \n\nWe've also pre-configured your Callback and Logout URLs with the URL of your application -- something that you'll need to know how to do. Let's deploy your application and API now, and in the next step we'll show you how to set those values in the Auth0 dashboard.\n\n1. #### Deploy the SPA and API\n   1. #### Click [here](command:workbench.action.debug.start) to build and deploy the SPA and API.\n   1. #### Ensure the ports are public so that the SPA app and API can communicate. Click the ports tab below, then right click each endpoint, and change the port visibility to public. You may see additional ports listed, which you can safely ignore.\n     ![](https://cdn.auth0.com/website/auth0/labs/ilt/public-ports.gif)\n  1. #### Click [here](command:auth0.lab.openEndpointByName?[\"Lab: API, Lab: SPA\"]) to launch and view the SPA and API in your web browser.\n  1. #### Because the ports were made public, you may be prompted with the following warning from GitHub:\n        ![GitHub warning prompt](https://cdn.auth0.com/website/a0fun/v2/github-codespaces-dialog.png)\n    \n        Select **Continue** on both your Web App and API pages to continue."
+      "title": "Enable Business Users",
+      "description": "## Enable Business Users\nWhen you began this lab, a script automatically registered the Single Page Application (Lab: SPA) that this lab uses in your tenant. \n\nThe Callback and Logout URLs with the URL of your application were also automatically configured. This was done because we assume at this point in your learning you know how to complete these steps. If you need to review these steps, you can check out this lab: [Working with APIs from a SPA](https://github.com/auth0-training/labs-node-working-with-apis-spa).\n\nNow we'll configure the SPA for Organizations by enabling business users and specifying a login flow for Organizations.\n\n\n1. #### Go to the [Applications page](https://manage.auth0.com/#/applications), and click the _Lab: SPA_ in the application list view.\n\n1. #### Select the the *Organizations* tab.\n\n1. #### Under *Types of Users*, select *Business Users*\n\n1. #### Under *Login Flow*, select *Prompt for Credentials*.\n\n1. #### Scroll down to the bottom of this page and select *Save Changes*"
     },
     {
       "file": "",
       "line": 1,
-      "title": "Examine the URL Settings for the SPA in Your Tenant",
-      "description": "## Examine the URL Settings for the SPA in Your Tenant\nNow that the application is deployed, the next step would be to update the application settings in Auth0 to reflect the deployment URLs.\n\n1. #### Go to the [Applications page](https://manage.auth0.com/#/applications), and click the _Lab: SPA_ in the application list view.\n\n1. #### On the Settings tab, scroll down to the Application URIs section.\n    Note that The **Allowed Callback URLs** and **Allowed Logout URLs** fields are already populated. \n\n     This is beacuse we've configured them automatically using the Auth0 extension for vscode. If this were not the case, you would need to paste the URL of your SPA application into these fields manually.\n\nAt this point, both the SPA and API are running. However, if you navigate to the Expenses page on your app without logging in, you'll see that some data is available there publically. \n\nThat's because that data isn't coming from the API, it's hard-coded into the SPA App. Let's fix that."
+      "title": "Create an Organization",
+      "description": "## Create an Organization\nNow we will begin the process of creating Organizations to represent the businesses that will have access to our application. We'll start off with **Agency Inc**.\n\n1. #### From the left navigation menu, go to the [Organizations page](https://manage.auth0.com/#/organizations).\n\n1. #### Select the *Create Organization* button.\n\n1. #### Enter *agency-inc* into the *Name* field.\n\n1. #### Enter *Agency Inc* into the *Display Name* field.\n\n1. #### Select the *Add Organization* button to save this configuration.",
+      "selection": {
+        "start": {
+          "line": 3,
+          "character": 1
+        },
+        "end": {
+          "line": 6,
+          "character": 74
+        }
+      }
     },
     {
       "file": "",
-      "description": "## Calling an API\n\nTo make your SPA consume the private endpoint (API) on the user's behalf, it must fetch an access token first, then call the protected API. The first time your application asks for an access token for an API, the authorization server will request explicit consent from your users.\n\nTo request this consent, your application needs to be updated to include the request during the authentication process. Once the user has authenticated they will be prompted to grant consent. On that page, your users will learn what type of access your application is requesting, and they will be able to grant access or deny it.\n\nWe'll do this by making changes here in the spa-app > app.js file.",
+      "description": "## Set Organization Branding.\n\nNow that you've created the **Agency Inc** organization, you'll see that you've landed on the organization's **Overview** page. From here, we can configure some branding options.\n\n1. #### Set the Primary Color to `#811ca3`\n\n1. #### Set the logo to",
       "line": 1
     },
     {
@@ -59,6 +69,10 @@
           "character": 9
         }
       }
+    },
+    {
+      "title": "placeholder",
+      "description": "#### Deploy the SPA and API\n   1. #### Click [here](command:workbench.action.debug.start) to build and deploy the SPA and API.\n   1. #### Ensure the ports are public so that the SPA app and API can communicate. Click the ports tab below, then right click each endpoint, and change the port visibility to public. You may see additional ports listed, which you can safely ignore.\n     ![](https://cdn.auth0.com/website/auth0/labs/ilt/public-ports.gif)\n  1. #### Click [here](command:auth0.lab.openEndpointByName?[\"Lab: API, Lab: SPA\"]) to launch and view the SPA and API in your web browser.\n  1. #### Because the ports were made public, you may be prompted with the following warning from GitHub:\n        ![GitHub warning prompt](https://cdn.auth0.com/website/a0fun/v2/github-codespaces-dialog.png)\n    \n        Select **Continue** on both your Web App and API pages to continue."
     },
     {
       "file": "",
