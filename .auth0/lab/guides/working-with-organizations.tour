@@ -12,7 +12,17 @@
       "file": "",
       "line": 1,
       "title": "Enable Business Users",
-      "description": "## Enable Business Users\nWhen you began this lab, a script automatically registered the Single Page Application (Lab: SPA) that this lab uses in your tenant. \n\nThe Callback and Logout URLs with the URL of your application were also automatically configured. This was done because we assume at this point in your learning you know how to complete these steps. If you need to review these steps, you can check out this lab: [Working with APIs from a SPA](https://github.com/auth0-training/labs-node-working-with-apis-spa).\n\nNow we'll configure the SPA for Organizations by enabling business users and specifying a login flow for Organizations.\n\n\n1. #### Go to the [Applications page](https://manage.auth0.com/#/applications), and click the _Lab: SPA_ in the application list view.\n\n1. #### Select the the *Organizations* tab.\n\n1. #### Under *Types of Users*, select *Business Users*\n\n1. #### Under *Login Flow*, select *Prompt for Credentials*.\n\n1. #### Scroll down to the bottom of this page and select *Save Changes*"
+      "description": "## Enable Business Users\nWhen you began this lab, a script automatically registered the Single Page Application (Lab: SPA) that this lab uses in your tenant. \n\nThe Callback and Logout URLs with the URL of your application were also automatically configured. This was done because we assume at this point in your learning you know how to complete these steps. If you need to review these steps, you can check out this lab: [Working with APIs from a SPA](https://github.com/auth0-training/labs-node-working-with-apis-spa).\n\nNow we'll configure the SPA for Organizations by enabling business users and specifying a login flow for Organizations.\n\n\n1. #### Go to the [Applications page](https://manage.auth0.com/#/applications), and select _Lab: SPA_ in the application list view.\n\n1. #### Select the the *Organizations* tab.\n\n1. #### Under *Types of Users*, select *Business Users*\n\n1. #### Under *Login Flow*, select *Prompt for Credentials*.\n\n1. #### Scroll down to the bottom of this page and select *Save Changes*",
+      "selection": {
+        "start": {
+          "line": 9,
+          "character": 4
+        },
+        "end": {
+          "line": 9,
+          "character": 135
+        }
+      }
     },
     {
       "file": "",
@@ -46,7 +56,7 @@
       }
     },
     {
-      "description": "## Enable Connections for an Organization\nBefore Organization members can log in through this Agency Inc, we'll need to enable at least one connection for it. Some business partners might bring their own identity provider (IdP), while others might not. When business partners do not have their own IdP, a good solution is to use an Auth0 database connection. Let's do that now!\n\n1. #### From the current Overview page, select *Connections*.\n2. #### Select the *Enable Connections* button.\n3. #### Select *Username-Password-Authentication*.\n4. #### Select the *Enable Connection* button to save this configuration.\n\nNow we have the option of setting up auto-membership for this connection. This means that any user logging in with this connection will be granted membership to the Agency Inc Organization automatically. For the purposes of this lab, keep the default selection: **Disable Auto-Membership**. Instead, we'll be sending invitations to users.",
+      "description": "## Enable Connections for an Organization\nBefore Organization members can log in through this Agency Inc, we'll need to enable at least one connection for it. Some business partners might bring their own identity provider (IdP), while others might not. When business partners do not have their own IdP, a good solution is to use an Auth0 database connection. Let's do that now!\n\n1. #### From the current Overview page, select *Connections*.\n2. #### Select the *Enable Connections* button.\n3. #### Select *Username-Password-Authentication*.\n4. #### Select the *Enable Connection* button to save this configuration.\n\nNow we have the option of setting up auto-membership for this connection. This means that any user logging in with this connection will be granted membership to the Agency Inc Organization automatically. For the purposes of this lab, keep the default selection: **Disable Auto-Membership**. Instead, we'll be sending manually granting membership to users.",
       "selection": {
         "start": {
           "line": 8,
@@ -60,14 +70,42 @@
       "title": "Enable Connections for an Organization"
     },
     {
-      "title": "placeholder",
-      "description": "#### Deploy the SPA and API\n   1. #### Click [here](command:workbench.action.debug.start) to build and deploy the SPA and API.\n   1. #### Ensure the ports are public so that the SPA app and API can communicate. Click the ports tab below, then right click each endpoint, and change the port visibility to public. You may see additional ports listed, which you can safely ignore.\n     ![](https://cdn.auth0.com/website/auth0/labs/ilt/public-ports.gif)\n  1. #### Click [here](command:auth0.lab.openEndpointByName?[\"Lab: API, Lab: SPA\"]) to launch and view the SPA and API in your web browser.\n  1. #### Because the ports were made public, you may be prompted with the following warning from GitHub:\n        ![GitHub warning prompt](https://cdn.auth0.com/website/a0fun/v2/github-codespaces-dialog.png)\n    \n        Select **Continue** on both your Web App and API pages to continue."
+      "title": "Review Lab: API Permissions",
+      "description": "## Review Lab: API Permissions\n\nRecall that the Lab: API was registered to your tenant on your behalf during the configuration step of this lab. We'll now review the permissions that are set on this API.\n\n1. #### Go to the [APIs page](https://manage.auth0.com/#/apis), and select _Lab: API_ in the API list view.\n2. #### Select the *Permissions* tab and review the permissions.\n\nNotice that there is just one permission set for this API, *read:reports*. This is because our API currently only defines one private route which only requires this scope. Let's create a few more permissions for the purpose of this lab.\n"
+    },
+    {
+      "title": "Add Additional Permissions to Lab: API",
+      "description": "## Add Additional Permissions to Lab: API\n\nNext we'll create additional permissions for Lab: API.\n\n#### 1. In the *Permission* field, enter `delete:reports`\n#### 2. In the *Description* field, enter `Delete reports`\n#### 3. Select the *+ Add* button to save.\n#### 4. Repeat this process to create additional permissions with the following *Permission* / *Description* pairs:\n-  `create:reports`   / `Create reports`\n-  `edit:reports` / `Edit reports`"
+    },
+    {
+      "title": "Enable RBAC",
+      "description": "## Enable RBAC\nIn order to grant permissions to Organization members, we'll need to define some roles with the necessary permissions. To do this, we first need to enable RBAC on the Lab: API.\n\n1. #### From the *Lab: API* page, select the *Settings* tab.\n1. #### Toggle on *Enable RBAC*\n\n"
+    },
+    {
+      "title": "Create Roles",
+      "description": "Now let's create the roles that we can assign to members of our Organization.\n\n1. #### Go to the Roles page by going to *User Management* > *Roles* in the left navigation menu.\n2. #### Select the *Add Role* button.\n3. #### Enter `Report Viewer` in the *Name* field.\n4. #### Enter `Read-only reports` in the *Description* field.\n5. #### Select the *Create* button.\n6. #### You should now be on the *Viewer* configuration page. Select the *Permissions* tab on this page.\n7. #### Select the *Add Permissions* button.\n8. #### Select *Lab: API* from the drop-down menu.\n9. #### Select the *read:reports* checkbox.\n10. #### Select the *Add Permissions* button to save this.\n\nRepeat these steps to create two more roles with the specified permissions:\n\n- #### Report Editor\n    - Name: Report Editor\n    - Description: View, create, and edit reports\n    - Permissions on **Lab: API**: `read:reports`, `create:reports`, `edit:reports`\n\n- #### Report Admin\n    - Name: Report Admin\n    - Description: View create, edit, and delete reports\n    - Permissions on **Lab: API**: `read:reports`, `create:reports`, `edit:reports`, `delete:reports`"
+    },
+    {
+      "title": "Set Up Test Users",
+      "description": "## Set Up Test Users\nBefore we can grant Organization membership, we'll need some test users in our **User-Password-Authentication** database connection. In this step, we leverage gmail aliases for the email addresses of these test users. If you do not have gmail or would rather use a different email provider, feel free to do so.\n\n1. #### From the left navigation menu go to *User Management* > *Users*\n2. #### Select the *Create User* button.\n3. #### In the *Email* field, enter a gmail alias in the form up *your-gmail-username*+*agency-viewer*@gmail.com. For instance, if my gmail address is *user@gmail.com*, I would enter *user+agency-viewer@gmail.com*\n4. #### Fill in your desired password in the two password fields.\n5. #### Make sure that *Username-Password-Authentication* is selected in the *Connection* field.\n6. #### Select the *Create User* button.\n\nRepeat this process to create two additional users using the following aliases:\n\n- #### *your-gmail-username*+*agency-editor*@gmail.com\n- #### *your-gmail-username*+*agency-admin*@gmail.com"
+    },
+    {
+      "title": "Grant Organization Membership",
+      "description": "## Grant Organization Membership\n\nRecall that there are a few ways of onboarding Organization members. We will be manually granting organization membership, which is a common strategy when prototyping or testing out a non-production B2B application.\n\n#### 1. Go to the *Organizations* page through the left navigation menu.\n#### 2. Select *Agency Inc*.\n#### 3. Select the *Members* tab.\n#### 4. Select the *Add Members* button.\n#### 5. Select the three members you just created in the previous step (e.g., username+agency-viewer@gmail.com, username+agency-editor@gmail.com, username+agency-admin@gmail.com). The easiest way to do this is to type in *agency*. Then you can select each of the three members to add them to the field.\n#### 6. Select the *Add Member(S)* button.\n\n"
+    },
+    {
+      "title": "Grant Organization Roles",
+      "description": "## Grant Organization Roles\n\nNow we need to grant each of our new organizations the appropriate Organization role. Notice we are doing this under the context of an Organization and not tenant-wide. This is so each user is only granted these permissions when they log in under the context of their Organization (in this case, Agency Inc).\n\n#### 1. Select the *viewer* member (e.g., username+viewer@gmail.com) from the *Agency Inc Members* page.\n#### 2. Select the *Assign Roles* button.\n#### 3. Select the *Report Viewer* role.\n#### 4. Select the *Assign Role(S)* button.\n\nSelect the **Back to Agency Inc** link and repeat these steps to:\n\n- #### Assign the *editor* member (e.g., username+editor@gmail.com) the *Report Editor* role.\n- #### Assign the *admin* member (e.g., username+admin@gmail.com) the *Report Admin* role."
+    },
+    {
+      "title": "Deploy the SPA and API",
+      "description": "## Deploy the SPA and API\n   1. #### Click [here](command:workbench.action.debug.start) to build and deploy the SPA and API.\n   1. #### Ensure the ports are public so that the SPA app and API can communicate. Click the ports tab below, then right click each endpoint, and change the port visibility to public. You may see additional ports listed, which you can safely ignore.\n   ![](https://cdn.auth0.com/website/auth0/labs/ilt/public-ports.gif)\n  1. #### Click [here](command:auth0.lab.openEndpointByName?[\"Lab: API, Lab: SPA\"]) to launch and view the SPA and API in your web browser.\n  1. #### Because the ports were made public, you may be prompted with the following warning from GitHub:\n        ![GitHub warning prompt](https://cdn.auth0.com/website/a0fun/v2/github-codespaces-dialog.png)\n    \n        Select **Continue** on both your Web App and API pages to continue."
     },
     {
       "file": "",
       "line": 1,
-      "title": "Give it a try!",
-      "description": "## Give it a try!\nYou are now ready to test the new version of the application. \n\nBut first, a little housekeeping is in order. \n1. #### Save changes and re-deploy:\n     1. #### Click [here](command:workbench.action.files.saveAll) to save all of the progress you've made.\n     1. #### Click [here](command:workbench.action.debug.stop) to stop the previous version of the SPA, and [here](command:workbench.action.debug.stop) to stop the previous version of the API.\n     1. #### Now, click [here](command:workbench.action.debug.start) to re-deploy the new versions.\n     1. #### Click [here](command:auth0.lab.openEndpointByName?[\"Lab: SPA, Lab: API\"]) to launch the SPA and API in your browser.\n\n1. #### Log in and try it out!\n     1. #### Click the Login link to start the authentication process. \n     1. #### Authenticate with the login you created for use with the lab materials.\n\n     The homepage should now addresses you by name and your profile image will be shown near the upper-right corner. It'll look something like this:\n\n     ![image11](https://cdn.auth0.com/website/training/example/IDFUN-M04-L01-Ex03/img-11.png)\n  \n     1. #### Click the Expenses link. \n     \n     The SPA will call the Expenses API and show the data retrieved. It should look something like this:\n\n     ![image15](https://cdn.auth0.com/website/training/example/IDFUN-M04-L01-Ex03/img-15.png)\n\nNice work! You have successfully updated the SPA application to call a secure API endpoint!"
+      "title": "Test the Viewer Member Account",
+      "description": "## Test the Viewer Member Account\nYou are now ready to test the B2B application and the Organization roles.\n\n1. #### Log in and try it out!\n     1. #### Click the Login link to start the authentication process. \n     1. #### Authenticate with the login you created for use with the lab materials.\n\n     The homepage should now addresses you by name and your profile image will be shown near the upper-right corner. It'll look something like this:\n\n     ![image11](https://cdn.auth0.com/website/training/example/IDFUN-M04-L01-Ex03/img-11.png)\n  \n     1. #### Click the Expenses link. \n     \n     The SPA will call the Expenses API and show the data retrieved. It should look something like this:\n\n     ![image15](https://cdn.auth0.com/website/training/example/IDFUN-M04-L01-Ex03/img-15.png)\n\nNice work! You have successfully updated the SPA application to call a secure API endpoint!"
     }
   ]
 }
