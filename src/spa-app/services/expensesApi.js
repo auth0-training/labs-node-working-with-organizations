@@ -29,7 +29,7 @@ const expensesApi = {
       const res = await fetch(`${window.env.API_URL}/reports`, options);
       const json = await res.json();
       return json;
-      // 👆 Replace this with call to API 👆
+
     } catch (err) {
       console.log("Error getting reports", err);
     }

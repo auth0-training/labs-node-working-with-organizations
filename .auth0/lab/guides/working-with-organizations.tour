@@ -105,7 +105,43 @@
       "file": "",
       "line": 1,
       "title": "Test the Viewer Member Account",
-      "description": "## Test the Viewer Member Account\nYou are now ready to test the B2B application and the Organization roles.\n\n1. #### Log in and try it out!\n     1. #### Click the Login link to start the authentication process. \n     1. #### Authenticate with the login you created for use with the lab materials.\n\n     The homepage should now addresses you by name and your profile image will be shown near the upper-right corner. It'll look something like this:\n\n     ![image11](https://cdn.auth0.com/website/training/example/IDFUN-M04-L01-Ex03/img-11.png)\n  \n     1. #### Click the Expenses link. \n     \n     The SPA will call the Expenses API and show the data retrieved. It should look something like this:\n\n     ![image15](https://cdn.auth0.com/website/training/example/IDFUN-M04-L01-Ex03/img-15.png)\n\nNice work! You have successfully updated the SPA application to call a secure API endpoint!"
+      "description": "## Test the Viewer Member Account\nYou are now ready to test the B2B application and the Organization roles.\n\n1. #### Click the Login link to start the authentication process. \n1. #### Enter the email address of the *viewer* account you created (e.g., username+viewer@gmail.com)\n1. #### Enter the password for this account.\n1. #### Wait... Shouldn't I be prompted for my Organization?! Since this account is only a member of one Organization, this step is skipped.\n\n     You should now be logged in as the viewer account and the account name and and your profile image will be shown near the upper-right corner. \n  \n1. #### Click the Expenses link. \n     \n     The SPA will call the Expenses API and show the data retrieved. It should look something like this:\n\n     ![image15](https://cdn.auth0.com/website/training/example/IDFUN-M04-L01-Ex03/img-15.png)\n\nThe data retrieved is from a protected Expenses API endpoint. How is this access managed to this protected endpoint? Let's take a closer look..."
+    },
+    {
+      "file": "src/api/api/index.js",
+      "selection": {
+        "start": {
+          "line": 62,
+          "character": 1
+        },
+        "end": {
+          "line": 62,
+          "character": 68
+        }
+      },
+      "description": "## Examine the Expenses API reports Endpoint\n\nBefore we review how access is granted to the protected Expenses API endpoint, let's examine the Expenses API code. Notice that the ` GET /reports` endpoint (the endpoint called when we select **Expenses** from our SPA app) is protected and requires the `read:reports` permission. This permission must be added to the *scopes* claim in the access token.\n\nLet's examine the access token that was returned from the Auth0 tenant's authorization server when we logged in as the viewer user."
+    },
+    {
+      "title": "Examine the Access Token",
+      "description": "## Examine the Access Token\n#### 1. In the same tab that you opened your application in, right click and select *Inspect* to open Google Chrome's Developer Tools.\n#### 2. Select the *Application* tab.\n#### 3. Select *Local Storage* and select your application (it should be the only entry).\n#### 4. Select the entry that has *\"access_token\"* in its *Value* section. \n#### 5. At the bottom of the screen, click on innermost *body* to expand it. This will reveal your encoded access token as well as its decoded standard claims.\n#### 6. Right-click the *access_token* item and select *Copy value*.\n#### 7. Open a new tab and go to https://jwt.io.\n#### 8. Paste the value you just copied into the *Encoded* field.\n#### 9. Examine the *scopes* claim and notice that it contains the `read:reports` scope.\n\nHow was that granted? Let's take a look."
+    },
+    {
+      "file": "src/spa-app/app.js",
+      "selection": {
+        "start": {
+          "line": 30,
+          "character": 1
+        },
+        "end": {
+          "line": 35,
+          "character": 74
+        }
+      },
+      "description": "## Examine the Application Code\n\nThe application uses Auth0's Express SDK to request the `read:reports` scope on behalf of the user. Since we've set up RBAC for the **Lab: API**, this request will only be granted by the Auth0 tenant's authorization server if the user's role contains this scope (permission). Furthermore, since the role is set at the Organization-level, the user will only be entitled to this scope if they log in under the context of the corresponding Organization.\n\nTo quickly test this idea, we can assign our viewer user to another Organization in which they do *NOT* have the Viewer role.\n\n### 1. In the Auth0 dashboard, create a new Organization called Big Holdings Co with the following values:\n- **Name:** `big-holdings-co`\n- **Display name:** `Big Holdings Co`\n\n### 2. Under the *Members* tab of this new Organization, add the viewer user (e.g. *username+viewer@gmail.com*) as a member of the *Big Holdings Co* Organization.\nNote that we will NOT be assigning this user a role under the context of the Big Holdings Co Organization!\n\n### 3. Now let's test the viewer user's access under the context of the Big Holdings Co Organization:\n  1. #### Switch to the tab where you visited the Lab: SPA application.\n  1. #### Log out of the application.\n  1. #### Log back in as the viewer user (e.g. *username+viewer@gmail.com*).\n  1. #### Notice that this time, you are prompted to select an Organization since this user belongs to more than one. Select *Big Holdings Co*.\n  1. #### Attempt to go to *Expenses* and notice that the resource does not load.\n\n### 4. Examine the server response:\n 1. #### Right-click the page and select *Inspect* to open Google Chrome's Developer Tools.\n 1. #### Select the *Network* tab.\n 1. #### Reload the *Expenses* page.\n 1. #### You should see a *403 (Forbidden)* status code, which indicates insufficient rights to a resource. \n\n ### 5. Examine the access token:\n 1. #### In Google Chrome's Developer Tools, select *Application*\n 1. #### Select *Local Storage* and select your application (it should be the only entry).\n 1. #### Select the entry that has \"access_token\" in its Value section.\n 1. #### At the bottom of the screen, click on innermost body to expand it. This will reveal your encoded access token as well as its decoded standard claims.\n 1. #### Right-click the *access_token* item and select *Copy value*.\n 1. #### Open a new tab and go to https://jwt.io.\n 1. #### Paste the value you just copied into the *Encoded* field.\n 1. #### Notice that `read:reports` is no longer present in the *scopes* claim."
+    },
+    {
+      "title": "Test the Admin Account",
+      "description": ""
     }
   ]
 }
