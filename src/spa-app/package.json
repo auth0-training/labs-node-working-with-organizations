@@ -1,0 +1,38 @@
+{
+  "name": "single-page-app-vanillajs",
+  "version": "2.0.0",
+  "description": "Auth0 Labs Sample SPA Application",
+  "license": "MIT",
+  "author": "Auth0",
+  "bugs": {
+    "url": "https://github.com/auth0-training/labs-node-working-with-organizations/issues"
+  },
+  "homepage": "https://github.com/auth0-training/labs-node-working-with-organizations#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auth0-training/labs-node-working-with-organizations.git"
+  },
+  "scripts": {
+    "dev": "parcel index.html -p $npm_package_config_spa_app_port",
+    "build": "parcel build index.html -d public --public-url ./",
+    "clean": "rm -rf .cache && rm -rf dist"
+  },
+  "config": {
+    "spa_app_port": 38500
+  },
+  "keywords": [
+    "auth0",
+    "openid",
+    "oidc",
+    "auth",
+    "authentication",
+    "samples",
+    "tools",
+    "labs"
+  ],
+  "devDependencies": {
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
+}
