@@ -32,13 +32,21 @@
     },
     {
       "file": "",
-      "description": "## Set Organization Branding.\n\nNow that you've created the **Agency Inc** organization, you'll see that you've landed on the organization's **Overview** page. From here, we can configure some branding options.\n\n1. #### Set the Primary Color to `#811ca3`\n\n1. #### Set the logo to",
-      "line": 1
+      "description": "## Set Organization Branding\n\nNow that you've created the **Agency Inc** organization, you'll see that you've landed on the organization's **Overview** page. From here, we can configure some branding options.\n\n1. #### Set the Primary Color to `#811ca3`\n\n1. #### Set the logo to `https://cdn.auth0.com/website/auth0-training/agency-inc-logo.svg`",
+      "line": 1,
+      "selection": {
+        "start": {
+          "line": 5,
+          "character": 36
+        },
+        "end": {
+          "line": 5,
+          "character": 42
+        }
+      }
     },
     {
-      "file": "src/spa-app/app.js",
-      "description": "## Requesting Consent\nHere, we'll update the spa-app's code to include the audience and scope that users will need to grant consent to.\n\n``` jsx\nwindow.auth0Client = await auth0.createAuth0Client({\n  domain,\n  clientId,\n    authorizationParams: {\n    redirect_uri,\n    audience: \"https://expenses-api\", // 👈 Added\n    scope: \"read:reports openid email profile\", // 👈 Added\n},\n    cacheLocation: \"localstorage\",\n});\n```\n\nThese additional properties tell the SPA SDK the audience and scope needed in the access token your application will request. The SDK will try to fetch access tokens capable of consuming the `https://expenses-api` API with the `read:reports` scope.",
-      "line": 15,
+      "description": "## Enable Connections for an Organization\nBefore Organization members can log in through this Agency Inc, we'll need to enable at least one connection for it. Some business partners might bring their own identity provider (IdP), while others might not. When business partners do not have their own IdP, a good solution is to use an Auth0 database connection. Let's do that now!\n\n1. #### From the current Overview page, select *Connections*.\n2. #### Select the *Enable Connections* button.\n3. #### Select *Username-Password-Authentication*.\n4. #### Select the *Enable Connection* button to save this configuration.\n\nNow we have the option of setting up auto-membership for this connection. This means that any user logging in with this connection will be granted membership to the Agency Inc Organization automatically. For the purposes of this lab, keep the default selection: **Disable Auto-Membership**. Instead, we'll be sending invitations to users.",
       "selection": {
         "start": {
           "line": 8,
@@ -48,27 +56,8 @@
           "line": 15,
           "character": 6
         }
-      }
-    },
-    {
-      "file": "src/spa-app/services/expensesApi.js",
-      "description": "## The expensesApi.js File\nAbove, you can see all the code used to request data from the Expenses API. There are two functions defined: `getTotals` and `getReports`. The getTotals function calls the Expenses API, but the `getReports` function is hardcoded with data.\n\nLet's change this, so that the data is requested from the API instead.",
-      "line": 39
-    },
-    {
-      "file": "src/spa-app/services/expensesApi.js",
-      "description": "## Replace Hard-Coded Data with the API Call\n\nThis code specifies the call for data to the Expenses API.\n\nThe new lines are nested inside a `try/catch` block and are executed when the expenses view is requested.\n\nFirst, the application calls the `getTokenSilently()` method (provided by the SPA SDK) to fetch a token without involving your user.\n\nAfter fetching an access token, the application will issue a request to the private API on the user's behalf.\n\nNote the authorization header passed to the `fetch()` function; this header includes the access token required to consume the expenses API.\n\n``` jsx\nconst token = await window.auth0Client.getTokenSilently();\nconst options = {\n    method: \"GET\",\n    headers: {\n    \"Content-Type\": \"application/json\",\n    Authorization: `Bearer ${token}`,\n    },\n};\nconst res = await fetch(`${window.env.API_URL}/reports`, options);\nconst json = await res.json();\nreturn json;\n```",
-      "line": 33,
-      "selection": {
-        "start": {
-          "line": 21,
-          "character": 1
-        },
-        "end": {
-          "line": 32,
-          "character": 9
-        }
-      }
+      },
+      "title": "Enable Connections for an Organization"
     },
     {
       "title": "placeholder",
