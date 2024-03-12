@@ -129,11 +129,11 @@
       "file": "src/spa-app/app.js",
       "selection": {
         "start": {
-          "line": 30,
+          "line": 14,
           "character": 1
         },
         "end": {
-          "line": 35,
+          "line": 14,
           "character": 74
         }
       },
@@ -141,7 +141,11 @@
     },
     {
       "title": "Test the Admin Account",
-      "description": ""
+      "description": "## Test the Admin Account\n\nNow let's test our *admin* user, who has the Admin role under the context of the *Agency Inc* Organization.\n\n#### 1. Return to the tab where you have your *Lab: SPA* application open.\n#### 2. Log out of the *viewer* user.\n#### 3. Log in as the *admin* user (e.g. *username+admin@gmail.com*).\n#### 4. Open Google Chrome's Developer Tools if it is not already open (Right-click and select *Inspect*).\n#### 5. Retrieve the encoded access token value from *Application > Local Storage*.\n#### 6. Paste the encoded access token into *https://jwt.io* and examine the scopes.\n\nHmm...That's interesting! The admin user only seems to have the `read:expenses` scope even though we logged in under the context of *Agency Inc*, where they have the *Admin* role, which has more permissions. Why might that be?\n\n💡 Hint: You may want to take a look at the previous step (Examine the Application Code)!"
+    },
+    {
+      "title": "Permissions vs. Requested Scopes",
+      "description": "## Permissions vs. Requested Scopes\nIf you went back to the *Examine the Application Code* step, you realized that we're only requesting the `read:reports` scope (permission). So, even though the Admin Role has permits additional permissions, the Auth0 tenant's authorization server will only grant the scopes that were actually requested (and only if the role permits them).\n\nIt's possible to request additional scopes when the user attempts to perform operations that require them. "
     }
   ]
 }
