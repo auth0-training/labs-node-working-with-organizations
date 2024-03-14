@@ -145,7 +145,7 @@
     },
     {
       "title": "Permissions vs. Requested Scopes",
-      "description": "## Permissions vs. Requested Scopes\nIf you went back to the *Examine the Application Code* step, you realized that we're only requesting the `read:reports` scope (permission). So, even though the Admin Role has permits additional permissions, the Auth0 tenant's authorization server will only grant the scopes that were actually requested (and only if the role permits them).\n\nIt's possible to request additional scopes when the user attempts to perform operations that require them. "
+      "description": "## Permissions vs. Requested Scopes\nIf you went back to the *Examine the Application Code* step, you realized that we're only requesting the `read:reports` scope (permission). So, even though the Admin Role has permits additional permissions, the Auth0 tenant's authorization server will only grant the scopes that were actually requested. Since Organizations use Role-based access control (RBAC), the requested scopes will only be granted if the role permits the them.\n\nWhile it's possible to request all possible scopes upon initial log in, it's best practice to only request and grant the scopes at the time the user needs them. This is especially true for sensitive operations such as delete operations. For added security, you can leverage Auth0 Actions to implement [Step Up Authentication](https://auth0.com/docs/secure/multi-factor-authentication/step-up-authentication) when scopes for sensitive operations are requested. "
     }
   ]
 }
