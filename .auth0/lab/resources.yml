@@ -28,4 +28,11 @@ resourceServers: # Add other resource server settings (https://auth0.com/docs/ap
     scopes:
       - value: "read:reports"
         description: "read reports"
+      - value: "create:reports"
+        description: "create reports"
+      - value: "edit:reports"
+        description: "edit reports"
+      - value: "delete:reports"
+        description: "delete reports"
+
 
