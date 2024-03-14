@@ -60,7 +60,7 @@
     },
     {
       "title": "Review Lab: API Permissions",
-      "description": "## Review Lab: API Permissions\n\nRecall that the Lab: API was registered to your tenant on your behalf during the configuration step of this lab. We'll now review the permissions that are defined for this API.\n\n1. #### Go to the [APIs page](https://manage.auth0.com/#/apis), and select _Lab: API_ in the API list view.\n2. #### Select the *Permissions* tab and review the permissions.\n\nNote that there should be four permissions defined for this API:\n- *read:reports*\n- *create:reports*\n- *edit:reports*\n- *delete:reports*\n"
+      "description": "## Review Lab: API Permissions\n\nRecall that the Lab: API was registered to your tenant on your behalf during the configuration step of this lab. We'll now review the permissions that are defined for this API.\n\n1. #### Go to the [APIs page](https://manage.auth0.com/#/apis) by going to *Applications* > *APIs* in the left navigation menu.\n2. #### Select _Lab: API_ in the API list view.\n3. #### Select the *Permissions* tab and review the permissions.\n\nNote that there should be four permissions defined for this API:\n- *read:reports*\n- *create:reports*\n- *edit:reports*\n- *delete:reports*\n"
     },
     {
       "title": "Enable RBAC",
