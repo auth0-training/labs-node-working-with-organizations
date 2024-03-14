@@ -6,7 +6,17 @@
       "file": "",
       "line": 1,
       "title": "What you'll do",
-      "description": "**Here's what you'll do:**  \n\nIn this lab, you will learn how to configure your Single-Page Application (SPA) to work with Organizations in order to manage your business users.\n\nThe SPA in question is a vanilla JavaScript application that consumes the Expenses API.\n\nYou will:\n\n- Enable business users to log in to your SPA\n- Configure a Prompt for Credentials log-in flow for your business users\n- Enable Identifier First authentication in your tenant\n- Review permissions defined for the registered Expenses API\n- Configure Organization Roles associated with permissions for this API\n- Add business users to your Organization\n- Assign business users Organization roles"
+      "description": "**Here's what you'll do:**  \n\nIn this lab, you will learn how to configure your Single-Page Application (SPA) to work with Organizations in order to manage your business users.\n\nThe SPA in question is a vanilla JavaScript application that consumes the Expenses API.\n\nYou will:\n\n- Enable business users to log in to your SPA\n- Configure a Prompt for Credentials log-in flow for your business users\n- Enable Identifier First authentication in your tenant\n- Review permissions defined for the registered Expenses API\n- Configure Organization Roles associated with permissions for this API\n- Add business users to your Organization\n- Assign business users Organization roles",
+      "selection": {
+        "start": {
+          "line": 9,
+          "character": 1
+        },
+        "end": {
+          "line": 15,
+          "character": 43
+        }
+      }
     },
     {
       "file": "",
@@ -72,7 +82,7 @@
     },
     {
       "title": "Set Up Test Users",
-      "description": "## Set Up Test Users\nBefore we can grant Organization membership, we'll need some test users in our **User-Password-Authentication** database connection. In this step, we leverage gmail aliases for the email addresses of these test users. If you do not have gmail or would rather use a different email provider, feel free to do so.\n\n1. #### From the left navigation menu go to *User Management* > *Users*\n2. #### Select the *Create User* button.\n3. #### In the *Email* field, enter a gmail alias in the form up *your-gmail-username*+*agency-viewer*@gmail.com. For instance, if my gmail address is *user@gmail.com*, I would enter *user+agency-viewer@gmail.com*\n4. #### Fill in your desired password in the two password fields.\n5. #### Make sure that *Username-Password-Authentication* is selected in the *Connection* field.\n6. #### Select the *Create User* button.\n\nRepeat this process to create two additional users using the following aliases:\n\n- #### *your-gmail-username*+*agency-editor*@gmail.com\n- #### *your-gmail-username*+*agency-admin*@gmail.com"
+      "description": "## Set Up Test Users\nBefore we can grant Organization membership, we'll need some test users in our **User-Password-Authentication** database connection. In this step, we leverage gmail aliases for the email addresses of these test users. If you do not have gmail or would rather use a different email provider, feel free to do so.\n\n1. #### From the left navigation menu go to *User Management* > *Users*\n2. #### Select the *Create User* button.\n3. #### In the *Email* field, enter a gmail alias in the form up *your-gmail-username*+*agency-viewer*@gmail.com. For instance, if my gmail address is *user@gmail.com*, I would enter *user+agency-viewer@gmail.com*\n4. #### Fill in your desired password in the two password fields.\n5. #### Make sure that *Username-Password-Authentication* is selected in the *Connection* field.\n6. #### Select the *Create User* button.\n\nSelect the **Back to Users** link and repeat this process to create two additional users using the following aliases:\n\n- #### *your-gmail-username*+*agency-editor*@gmail.com\n- #### *your-gmail-username*+*agency-admin*@gmail.com"
     },
     {
       "title": "Grant Organization Membership",
@@ -130,7 +140,11 @@
     },
     {
       "title": "Permissions vs. Requested Scopes",
-      "description": "## Permissions vs. Requested Scopes\nIf you went back to the *Examine the Application Code* step, you realized that we're only requesting the `read:reports` scope (permission). So, even though the Admin Role has permits additional permissions, the Auth0 tenant's authorization server will only grant the scopes that were actually requested. Since Organizations use Role-based access control (RBAC), the requested scopes will only be granted if the role permits the them.\n\nWhile it's possible to request all possible scopes upon initial log in, it's best practice to only request and grant the scopes at the time the user needs them. This is especially true for sensitive operations such as delete operations. For added security, you can leverage Auth0 Actions to implement [Step Up Authentication](https://auth0.com/docs/secure/multi-factor-authentication/step-up-authentication) when scopes for sensitive operations are requested. "
+      "description": "## Permissions vs. Requested Scopes\nIf you went back to the *Examine the Application Code* step, you realized that we're only requesting the `read:reports` scope (permission). So, even though the Admin Role permits additional permissions, the Auth0 tenant's authorization server will only grant the scopes that were actually requested. Since Organizations use Role-based access control (RBAC), the requested scopes will only be granted if the role permits the them.\n\nWhile it's possible to request all possible scopes upon initial log in, it's best practice to only request and grant the scopes at the time the user needs them. This is especially true for sensitive operations such as delete operations. For added security, you can leverage Auth0 Actions to implement [Step Up Authentication](https://auth0.com/docs/secure/multi-factor-authentication/step-up-authentication) when scopes for sensitive operations are requested. "
+    },
+    {
+      "title": "Yay! Finished!",
+      "description": "## 🎉 Yay! Finished!\n\nLet's recap what you've achieved:\n\n- Enabled business users to log in to your SPA\n- Configured a Prompt for Credentials log-in flow for your business users\n- Enabled Identifier First authentication in your tenant\n- Reviewed permissions defined for the registered Expenses API\n- Configured Organization Roles associated with permissions for this API\n- Added business users to your Organization\n- Assigned Organization roles to business users"
     }
   ]
 }
