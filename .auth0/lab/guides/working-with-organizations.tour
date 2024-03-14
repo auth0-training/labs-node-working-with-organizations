@@ -6,7 +6,7 @@
       "file": "",
       "line": 1,
       "title": "What you'll do",
-      "description": "**Here's what you'll do:**  \n\nIn this lab, you will learn how to configure your Single-Page Application (SPA) to work with Organizations in order to manage your business users.\n\nThe SPA in question is a vanilla JavaScript application that consumes the Expenses API.\n\nYou will configure Organization Roles associated with permissions for this API."
+      "description": "**Here's what you'll do:**  \n\nIn this lab, you will learn how to configure your Single-Page Application (SPA) to work with Organizations in order to manage your business users.\n\nThe SPA in question is a vanilla JavaScript application that consumes the Expenses API.\n\nYou will:\n\n- Enable business users to log in to your SPA\n- Configure a Prompt for Credentials log-in flow for your business users\n- Enable Identifier First authentication in your tenant\n- Review permissions defined for the registered Expenses API\n- Configure Organization Roles associated with permissions for this API\n- Add business users to your Organization\n- Assign business users Organization roles"
     },
     {
       "file": "",
@@ -25,6 +25,10 @@
       }
     },
     {
+      "title": "Enable Identifier First Authentication",
+      "description": "## Enable Authentication First Authentication\n\nSince we specified a **Prompt for Credentials** log-in flow for our business users, we will want to enable **Identifier First** authentication in our Auth0 tenant. This is because some of our Organizations may bring their own IdP, so we will first need to capture their identifier (username or email address) to decide where to send them for authentication. This will either be the Auth0 Universal Login page or the Organization's own IdP.\n\n#### 1. In the left navigation menu, go to *Authentication* > *Authentication Profile*\n#### 1. Select *Identifier First*\n#### 1. Select the *Save* button."
+    },
+    {
       "file": "",
       "line": 1,
       "title": "Create an Organization",
@@ -41,22 +45,7 @@
       }
     },
     {
-      "file": "",
-      "description": "## Set Organization Branding\n\nNow that you've created the **Agency Inc** organization, you'll see that you've landed on the organization's **Overview** page. From here, we can configure some branding options.\n\n1. #### Set the Primary Color to `#811ca3`\n\n1. #### Set the logo to `https://cdn.auth0.com/website/auth0-training/agency-inc-logo.svg`",
-      "line": 1,
-      "selection": {
-        "start": {
-          "line": 5,
-          "character": 36
-        },
-        "end": {
-          "line": 5,
-          "character": 42
-        }
-      }
-    },
-    {
-      "description": "## Enable Connections for an Organization\nBefore Organization members can log in through this Agency Inc, we'll need to enable at least one connection for it. Some business partners might bring their own identity provider (IdP), while others might not. When business partners do not have their own IdP, a good solution is to use an Auth0 database connection. Let's do that now!\n\n1. #### From the current Overview page, select *Connections*.\n2. #### Select the *Enable Connections* button.\n3. #### Select *Username-Password-Authentication*.\n4. #### Select the *Enable Connection* button to save this configuration.\n\nNow we have the option of setting up auto-membership for this connection. This means that any user logging in with this connection will be granted membership to the Agency Inc Organization automatically. For the purposes of this lab, keep the default selection: **Disable Auto-Membership**. Instead, we'll be sending manually granting membership to users.",
+      "description": "## Enable Connections for an Organization\nNow that you've created the **Agency Inc** Organization, you'll see that you've landed on the Organization's **Overview** page. \n\nBefore Organization members can log in through the Agency Inc Organization, we'll need to enable at least one connection for it. Some business partners might bring their own identity provider (IdP), while others might not. When business partners do not have their own IdP, a good solution is to use an Auth0 database connection. Let's do that now!\n\n1. #### From the current Overview page, select *Connections*.\n2. #### Select the *Enable Connections* button.\n3. #### Select *Username-Password-Authentication*.\n4. #### Select the *Enable Connection* button to save this configuration.\n\nNow we have the option of setting up auto-membership for this connection. This means that any user logging in with this connection will be granted membership to the Agency Inc Organization automatically. For the purposes of this lab, keep the default selection: **Disable Auto-Membership**. Instead, we'll be sending manually granting membership to users.",
       "selection": {
         "start": {
           "line": 8,
@@ -71,11 +60,7 @@
     },
     {
       "title": "Review Lab: API Permissions",
-      "description": "## Review Lab: API Permissions\n\nRecall that the Lab: API was registered to your tenant on your behalf during the configuration step of this lab. We'll now review the permissions that are set on this API.\n\n1. #### Go to the [APIs page](https://manage.auth0.com/#/apis), and select _Lab: API_ in the API list view.\n2. #### Select the *Permissions* tab and review the permissions.\n\nNotice that there is just one permission set for this API, *read:reports*. This is because our API currently only defines one private route which only requires this scope. Let's create a few more permissions for the purpose of this lab.\n"
-    },
-    {
-      "title": "Add Additional Permissions to Lab: API",
-      "description": "## Add Additional Permissions to Lab: API\n\nNext we'll create additional permissions for Lab: API.\n\n#### 1. In the *Permission* field, enter `delete:reports`\n#### 2. In the *Description* field, enter `Delete reports`\n#### 3. Select the *+ Add* button to save.\n#### 4. Repeat this process to create additional permissions with the following *Permission* / *Description* pairs:\n-  `create:reports`   / `Create reports`\n-  `edit:reports` / `Edit reports`"
+      "description": "## Review Lab: API Permissions\n\nRecall that the Lab: API was registered to your tenant on your behalf during the configuration step of this lab. We'll now review the permissions that are defined for this API.\n\n1. #### Go to the [APIs page](https://manage.auth0.com/#/apis), and select _Lab: API_ in the API list view.\n2. #### Select the *Permissions* tab and review the permissions.\n\nNote that there should be four permissions defined for this API:\n- *read:reports*\n- *create:reports*\n- *edit:reports*\n- *delete:reports*\n"
     },
     {
       "title": "Enable RBAC",
@@ -83,7 +68,7 @@
     },
     {
       "title": "Create Roles",
-      "description": "Now let's create the roles that we can assign to members of our Organization.\n\n1. #### Go to the Roles page by going to *User Management* > *Roles* in the left navigation menu.\n2. #### Select the *Add Role* button.\n3. #### Enter `Report Viewer` in the *Name* field.\n4. #### Enter `Read-only reports` in the *Description* field.\n5. #### Select the *Create* button.\n6. #### You should now be on the *Viewer* configuration page. Select the *Permissions* tab on this page.\n7. #### Select the *Add Permissions* button.\n8. #### Select *Lab: API* from the drop-down menu.\n9. #### Select the *read:reports* checkbox.\n10. #### Select the *Add Permissions* button to save this.\n\nRepeat these steps to create two more roles with the specified permissions:\n\n- #### Report Editor\n    - Name: Report Editor\n    - Description: View, create, and edit reports\n    - Permissions on **Lab: API**: `read:reports`, `create:reports`, `edit:reports`\n\n- #### Report Admin\n    - Name: Report Admin\n    - Description: View create, edit, and delete reports\n    - Permissions on **Lab: API**: `read:reports`, `create:reports`, `edit:reports`, `delete:reports`"
+      "description": "Now let's create the roles that we can assign to members of our Organization.\n\n1. #### Go to the Roles page by going to *User Management* > *Roles* in the left navigation menu.\n2. #### Select the *Add Role* button.\n3. #### Enter `Report Viewer` in the *Name* field.\n4. #### Enter `Read-only reports` in the *Description* field.\n5. #### Select the *Create* button.\n6. #### You should now be on the *Viewer* configuration page. Select the *Permissions* tab on this page.\n7. #### Select the *Add Permissions* button.\n8. #### Select *Lab: API* from the drop-down menu.\n9. #### Select the *read:reports* checkbox.\n10. #### Select the *Add Permissions* button to save this.\n\nRepeat these steps to create two more roles with the specified permissions:\n\n- #### Report Editor\n    - **Name**: `Report Editor`\n    - **Description**: `View, create, and edit reports`\n    - **Permissions on Lab: API**: `read:reports`, `create:reports`, `edit:reports`\n\n- #### Report Admin\n    - **Name**: `Report Admin`\n    - **Description**: `View create, edit, and delete reports`\n    - **Permissions on Lab: API**: `read:reports`, `create:reports`, `edit:reports`, `delete:reports`"
     },
     {
       "title": "Set Up Test Users",
