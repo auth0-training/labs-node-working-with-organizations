@@ -8,10 +8,12 @@ import router from "./router";
   window.auth0Client = await auth0.createAuth0Client({
     domain,
     clientId,
-       authorizationParams:{
+      authorizationParams: {
       redirect_uri,
-    },
-    cacheLocation: "localstorage",
+      audience: "https://expenses-api",
+      scope: "openid email profile read:reports",
+  },
+      cacheLocation: "localstorage",
   });
 
   // handle user navigation
