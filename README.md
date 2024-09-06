@@ -1,7 +1,8 @@
-[![Auth0 Training](https://user-images.githubusercontent.com/73120/125103885-a2bb5d80-e091-11eb-8084-383003f1e484.png "Auth0 Training")](https://training.auth0.com)
-# Lab Node Working with Organizations
+# Lab: Manage B2B Users and Applications with Auth0 Organizations
 
-In this hands-on lab, learners configure a B2B application and API to work with Auth0 Organizations. 
+Need to serve your SaaS application to multiple third-party organizations? Easily onboard B2B users and configure role-based access to your SaaS application.
+
+In this hands-on [Okta Training](https://okta.com/training) lab, learners configure a B2B application and API to work with Auth0 Organizations. 
 
 > Note: This lab template is an experimental release, and is built on a best-efforts basis by some Auth0 developers in their available innovation time. It is open-source licensed and free to use, and is not covered by any Auth0 Terms of Service or Agreements. If you have issues with this template you can engage with the project's developer community through the repository GitHub Issues list, or contribute fixes and enhancements of your own via a Pull Request.
 ## Requirements
