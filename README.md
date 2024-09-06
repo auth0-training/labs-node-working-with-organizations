@@ -4,7 +4,6 @@ Need to serve your SaaS application to multiple third-party organizations? Easil
 
 In this hands-on [Okta Training](https://okta.com/training) lab, learners configure a B2B application and API to work with Auth0 Organizations. 
 
-> Note: This lab template is an experimental release, and is built on a best-efforts basis by some Auth0 developers in their available innovation time. It is open-source licensed and free to use, and is not covered by any Auth0 Terms of Service or Agreements. If you have issues with this template you can engage with the project's developer community through the repository GitHub Issues list, or contribute fixes and enhancements of your own via a Pull Request.
 ## Requirements
 
 1. A GitHub account: Our labs use GitHub Codespaces, so you'll need a GitHub account to access them. Create a free account [here](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account).
