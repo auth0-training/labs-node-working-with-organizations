@@ -1,3 +1,4 @@
+![img](https://cdn.auth0.com/website/auth0-training/auth0-labs-ext/oktane24.png)
 # Lab: Manage B2B Users and Applications with Auth0 Organizations
 
 Need to serve your SaaS application to multiple third-party organizations? Easily onboard B2B users and configure role-based access to your SaaS application.
