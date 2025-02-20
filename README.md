@@ -2,7 +2,7 @@
 
 Need to serve your SaaS application to multiple third-party organizations? Easily onboard B2B users and configure role-based access to your SaaS application.
 
-In this hands-on [Okta Training](https://okta.com/training) lab, learners configure a B2B application and API to work with Auth0 Organizations. 
+In this hands-on [Okta Learning](https://learning.okta.com/) lab, learners configure a B2B application and API to work with Auth0 Organizations. 
 
 ---
 
