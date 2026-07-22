@@ -55,15 +55,15 @@
       }
     },
     {
-      "description": "## Enable Connections for an Organization\nNow that you've created the **Agency Inc** Organization, you'll see that you've landed on the Organization's **Overview** page. \n\nBefore Organization members can log in through the Agency Inc Organization, we'll need to enable at least one connection for it. Some business partners might bring their own identity provider (IdP), while others might not. When business partners do not have their own IdP, a good solution is to use an Auth0 database connection. Let's do that now!\n\n1.  From the current Overview page, select the **Connections** tab.\n2.  Select the **Enable Connections** button.\n3.  Select **Username-Password-Authentication**.\n4.  Select the **Enable Connection** button to save this configuration.\n\nNow we have the option of setting up auto-membership for this connection. This means that any user logging in with this connection will be granted membership to the Agency Inc Organization automatically. For the purposes of this lab, keep the default selection: **Disable Auto-Membership**. Instead, we'll be sending manually granting membership to users.",
+      "description": "## Enable Connections for an Organization\nNow that you've created the **Agency Inc** Organization, you'll see that you've landed on the Organization's **Overview** page. \n\nBefore Organization members can log in through the Agency Inc Organization, we'll need to enable at least one connection for it. Some business partners might bring their own identity provider (IdP), while others might not. When business partners do not have their own IdP, a good solution is to use an Auth0 database connection. Let's do that now!\n\n1.  From the current Overview page, select the **Connections** tab.\n2.  Select the **Add Connection** button.\n3.  Select **Username-Password-Authentication**.\n4.  Save the configuration.\n\nNow we have the option of setting up auto-membership for this connection. This means that any user logging in with this connection will be granted membership to the Agency Inc Organization automatically. For the purposes of this lab, keep the default selection: **Disable Auto-Membership**. Instead, we'll be sending manually granting membership to users.",
       "selection": {
         "start": {
-          "line": 8,
-          "character": 1
+          "line": 7,
+          "character": 5
         },
         "end": {
-          "line": 15,
-          "character": 6
+          "line": 7,
+          "character": 42
         }
       },
       "title": "Enable Connections for an Organization"
@@ -102,7 +102,7 @@
     },
     {
       "title": "Set Up Test Users",
-      "description": "## Set Up Test Users\nBefore we can grant Organization membership, we'll need some test users in our **User-Password-Authentication** database connection. In this step, we leverage gmail aliases for the email addresses of these test users. If you do not have gmail or would rather use a different email provider, feel free to do so.\n\n1.  From the left navigation menu go to **User Management** > **Users**.\n2.  Select the **Create User** button.\n3.  In the **Email** field, enter a gmail alias in the form up *your-gmail-username*+*viewer*@gmail.com. For instance, if my gmail address is *user@gmail.com*, I would enter *user+viewer@gmail.com*\n4.  Fill in your desired password in the two password fields.\n5.  Make sure that **Username-Password-Authentication** is selected in the **Connection** field.\n6.  Select the **Create Another** button.\n7. Repeat this process to create two additional users using the following aliases:\n\n    -  *your-gmail-username*+*editor*@gmail.com\n    -  *your-gmail-username*+*admin*@gmail.com",
+      "description": "## Set Up Test Users\nBefore we can grant Organization membership, we'll need some test users in our **User-Password-Authentication** database connection. In this step, we leverage gmail aliases for the email addresses of these test users. If you do not have gmail or would rather use a different email provider, feel free to do so.\n\n1.  From the left navigation menu go to **User Management** > **Users**.\n2.  Select the **Create User** button and select **Create via UI**.\n3.  In the **Email** field, enter a gmail alias in the form up *your-gmail-username*+*viewer*@gmail.com. For instance, if my gmail address is *user@gmail.com*, I would enter *user+viewer@gmail.com*\n4.  Fill in your desired password in the two password fields.\n5.  Make sure that **Username-Password-Authentication** is selected in the **Connection** field.\n6.  Select the **Create Another** button.\n7. Repeat this process to create two additional users using the following aliases:\n\n    -  *your-gmail-username*+*editor*@gmail.com\n    -  *your-gmail-username*+*admin*@gmail.com",
       "selection": {
         "start": {
           "line": 12,
