@@ -2,7 +2,7 @@
 
 Need to serve your SaaS application to multiple third-party organizations? Easily onboard B2B users and configure role-based access to your SaaS application.
 
-In this hands-on [Okta Learning](https://learning.okta.com/) lab, learners configure a B2B application and API to work with Auth0 Organizations. 
+In this hands-on [Okta Learning](https://learning.okta.com/) lab, learners configure a B2B application and API to work with Auth0 Organizations.
 
 ---
 
@@ -18,7 +18,7 @@ In this hands-on [Okta Learning](https://learning.okta.com/) lab, learners confi
 
 ## Accessing and Working with Auth0 Labs
 
-1. **After logging into GitHub, open the lab repo in a Codespace:** From the *Code* dropdown menu of this branch, toggle to the *Codespaces* tab. Click the plus sign to create and open the lab in a Codespace. A new tab will open, and Codespaces will begin configuring the lab environment. Wait for the environment to finish building.
+1. **After logging into GitHub, open the lab repo in a Codespace:** From the *Code* dropdown menu of this branch, toggle to the *Codespaces* tab. Select the plus sign to create and open the lab in a Codespace. A new tab will open, and Codespaces will begin configuring the lab environment. Wait for the environment to finish building.
 2. **Begin working with the lab:** Once the environment is ready you'll see a Codetour popup with instructions for connecting the lab to your Auth0 account. This can take some time, as the environment is installing several extensions and libraries to facilitate the lab. Once it is complete, you can open the Codetour to view all steps using the panel in the lower right. At this point, you should follow the remainder of the instructions within Codetour!
 
 ### Notes:
